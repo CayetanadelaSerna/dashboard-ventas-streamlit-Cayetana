@@ -149,11 +149,11 @@ with tab1:
 
     a, b = st.columns(2)
     with a:
-        st.plotly_chart(fig_top_products, use_container_width=True)
+        st.plotly_chart(fig_top_products, width='stretch')
     with b:
-        st.plotly_chart(fig_promo_stores, use_container_width=True)
+        st.plotly_chart(fig_promo_stores, width='stretch')
 
-    st.plotly_chart(fig_store_dist, use_container_width=True)
+    st.plotly_chart(fig_store_dist, width='stretch')
 
     st.divider()
     st.subheader("3) Estacionalidad de ventas")
@@ -188,9 +188,9 @@ with tab1:
     fig_month.update_xaxes(type="category")
 
     c1, c2, c3 = st.columns(3)
-    with c1: st.plotly_chart(fig_dow, use_container_width=True)
-    with c2: st.plotly_chart(fig_week, use_container_width=True)
-    with c3: st.plotly_chart(fig_month, use_container_width=True)
+    with c1: st.plotly_chart(fig_dow, width='stretch')
+    with c2: st.plotly_chart(fig_week, width='stretch')
+    with c3: st.plotly_chart(fig_month, width='stretch')
 
 # =========================================================
 # TAB 2 - TIENDA
@@ -226,7 +226,7 @@ with tab2:
         promo_sales = df_store[df_store["onpromotion"] > 0]["sales"].sum()
         kpi_card("Ventas en promoción (suma sales)", float(promo_sales))
 
-    st.plotly_chart(fig_sales_year, use_container_width=True)
+    st.plotly_chart(fig_sales_year, width='stretch')
 
     # Extra útil: Top productos de esa tienda
     top_store_products = (
@@ -241,7 +241,7 @@ with tab2:
         title=f"Tienda {store_selected}: Top 10 productos por ventas"
     )
     fig_top_store_products.update_layout(yaxis={"categoryorder": "total ascending"})
-    st.plotly_chart(fig_top_store_products, use_container_width=True)
+    st.plotly_chart(fig_top_store_products, width='stretch')
 
 # =========================================================
 # TAB 3 - ESTADO
@@ -289,14 +289,14 @@ with tab3:
 
     left, right = st.columns(2)
     with left:
-        st.plotly_chart(fig_tx_year, use_container_width=True)
-        st.plotly_chart(fig_rank, use_container_width=True)
+        st.plotly_chart(fig_tx_year, width='stretch')
+        st.plotly_chart(fig_rank, width='stretch')
 
     with right:
         st.markdown("**Producto más vendido por tienda (Top 15 tiendas por ventas del producto líder)**")
         st.dataframe(
             top_product_per_store.rename(columns={"sales": "ventas_top_producto"}),
-            use_container_width=True,
+            width='stretch',
             hide_index=True
         )
 
@@ -350,8 +350,10 @@ with tab4:
 
     a, b = st.columns(2)
     with a:
-        st.plotly_chart(fig_promo_compare, use_container_width=True)
-        st.plotly_chart(fig_holiday, use_container_width=True)
+        st.plotly_chart(fig_promo_compare, width='stretch')
+        st.plotly_chart(fig_holiday, width='stretch')
     with b:
-        st.plotly_chart(fig_oil, use_container_width=True)
+        st.plotly_chart(fig_oil, width='stretch')
+
+
 
